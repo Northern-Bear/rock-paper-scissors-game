@@ -27,10 +27,20 @@ function getComputerChoice() {
   return choice;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // **2. Get the humans choice:
 //      - Create function called getHumanChoice.
 //      - Prompt user to type 'Rock', 'Paper', or 'Scissors'.
 //      - Return the users input.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function getHumanChoice() {
+  let choice = prompt("Which do you choose? Rock, Paper, or Scissors?");
+  if (choice !== undefined) {
+    return choice;
+  } else return "";
+}
+
 // **3. Keep track of the scores:
 //      - Create variables for humanScore and computerScore.
 //      - Initialize both to 0.
