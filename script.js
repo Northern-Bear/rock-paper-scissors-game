@@ -41,15 +41,65 @@ function getHumanChoice() {
   } else return "";
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // **3. Keep track of the scores:
 //      - Create variables for humanScore and computerScore.
 //      - Initialize both to 0.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let humanScore = 0;
+let computerScore = 0;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // **4. Play a single round:
 //      - Create function called playRound that takes getComputerChoice and getHumanChoice as arguments.
 //      - Make the choices case-sensitive (so 'rock' or 'ROCK' both work).
 //      - Compare the choices using conditional logic (if/else statements).
 //      - Log the winner message to the console (e.g. "You Lost! Paper beats Rock").
 //      - Increment the winners score variable
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function playRound(computerChoice, humanChoice) {
+  console.log(`The computer chose: ${computerChoice}`);
+
+  let userChoice = humanChoice.toLowerCase().trim();
+  let capitalizedUserChoice =
+    userChoice.charAt(0).toUpperCase() + userChoice.slice(1);
+
+  if (
+    userChoice === "rock" ||
+    userChoice === "paper" ||
+    userChoice === "scissors"
+  ) {
+    console.log(`You chose: ${capitalizedUserChoice}`);
+  } else console.log("Invalid choice! Refresh to try again.");
+
+  if (capitalizedUserChoice === computerChoice) {
+    console.log("It's a tie! Both chose " + capitalizedUserChoice);
+  }
+
+  if (
+    (capitalizedUserChoice === "Rock" && computerChoice === "Scissors") ||
+    (capitalizedUserChoice === "Paper" && computerChoice === "Rock") ||
+    (capitalizedUserChoice === "Scissors" && computerChoice === "Paper")
+  ) {
+    console.log(
+      "You Win! " + capitalizedUserChoice + " beats " + computerChoice,
+    );
+    humanScore += 1;
+  } else {
+    console.log(
+      "You Lost! " + computerChoice + " beats " + capitalizedUserChoice,
+    );
+    computerScore += 1;
+  }
+
+  console.log("Player Score: " + humanScore);
+  console.log("CPU Score: " + computerScore);
+}
+
+playRound(getComputerChoice(), getHumanChoice());
+
 // **5. Play the full game:
 //      - Create function called playGame.
 //      - Call playRound inside it 5 times.
