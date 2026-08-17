@@ -84,12 +84,18 @@ function playRound(computerChoice, humanChoice) {
     (capitalizedUserChoice === "Scissors" && computerChoice === "Paper")
   ) {
     console.log(
-      "You Win! " + capitalizedUserChoice + " beats " + computerChoice,
+      "You win the round! " +
+        capitalizedUserChoice +
+        " beats " +
+        computerChoice,
     );
     humanScore += 1;
   } else {
     console.log(
-      "You Lost! " + computerChoice + " beats " + capitalizedUserChoice,
+      "You lost the round! " +
+        computerChoice +
+        " beats " +
+        capitalizedUserChoice,
     );
     computerScore += 1;
   }
@@ -98,9 +104,25 @@ function playRound(computerChoice, humanChoice) {
   console.log("CPU Score: " + computerScore);
 }
 
-playRound(getComputerChoice(), getHumanChoice());
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 // **5. Play the full game:
 //      - Create function called playGame.
 //      - Call playRound inside it 5 times.
 //      - Compare final scores and declare the winner.
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+function playGame() {
+  playRound(getComputerChoice(), getHumanChoice());
+  playRound(getComputerChoice(), getHumanChoice());
+  playRound(getComputerChoice(), getHumanChoice());
+  playRound(getComputerChoice(), getHumanChoice());
+  playRound(getComputerChoice(), getHumanChoice());
+
+  if (humanScore > computerScore) {
+    console.log("Congrats! You have won the game!");
+  } else if (humanScore < computerScore) {
+    console.log("The CPU has won the game!");
+  } else console.log("Its a Tie!");
+}
+
+playGame();
